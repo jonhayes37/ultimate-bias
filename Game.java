@@ -29,8 +29,7 @@ class Game {
 
 	public static void main(String[] args){
 		System.out.println("Starting game");
-		System.out.println(Idols.values());
-
+		System.out.println(Group.values());
 		/*
 		Step 1: create decks (mission, ultimate bias, draw pile), shuffle cards
 		Step 2: determine number of players

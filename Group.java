@@ -1,3 +1,6 @@
+import java.security.KeyException;
+import java.util.*;
+
 public enum Group {
 
 	APRIL(
@@ -16,6 +19,66 @@ public enum Group {
 		Map.of(3, 15, 6, 60, 9, 140)
 	),
 	LOVELYZ(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	RED_VELVET(
+		Label.SM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	FOUR_MINUTE(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	OH_MY_GIRL(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	BIGBANG(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	PRISTIN(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	MISS_A(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	TWICE(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	GFRIEND(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	GUGUDAN(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	DIA(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	SHINEE(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	EXID(
 		Label.WOOLLIM, 
 		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
 		Map.of(3, 15, 6, 60, 9, 140)
@@ -38,13 +101,13 @@ public enum Group {
    	public int getTierPoints(int numMembers){
    		try {
    			if (this.pointValues.keySet().contains(numMembers)){
-   				return this.pointValues.get(numMembers)
+   				return this.pointValues.get(numMembers);
    			}else{
    				throw new KeyException(this.toString() + " does not have a point tier for " + numMembers + " members!");
    			}
    		} catch (KeyException e) {
    			System.out.println(e);
-   			return null;
+   			return -1;
    		}
    	}
 }

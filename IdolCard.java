@@ -1,19 +1,17 @@
-class Idol extends Card {
-	private Groups group;
+class IdolCard extends Card {
+	
+	private Group group;
 	private Nationality nationality;
-	private Label label;
 	private String effectText;
 
-	public Idol(String name, Groups group, Label label, Nationality nationality, String effect){
+	public IdolCard(String name, Group group, Nationality nationality, String effect){
 		super(name);
 		this.group = group;
-		this.label = label;
 		this.nationality = nationality;
 		this.effectText = effect;
 	}
 
-	public Groups getGroup(){ return this.group; }
-	public Label getLabel(){ return this.label; }
+	public Group getGroup(){ return this.group; }
 	public Nationality getNationality(){ return this.nationality; }
 	public String getEffectText(){ return this.effectText; }
 }

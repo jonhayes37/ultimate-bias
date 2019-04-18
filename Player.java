@@ -5,28 +5,28 @@ class Player {
 
 	private String name;
 	private int score;
-	private ArrayList<Idol> hand;
-	private Mission mission;
-	private UltimateBias ultimateBias;
-	private Map<Groups,ArrayList<Idol>> playArea;
+	private ArrayList<IdolCard> hand;
+	private MissionCard mission;
+	private UltimateBiasCard ultimateBias;
+	private Map<Group,ArrayList<IdolCard>> playArea;
 
-	public Player(String name, ArrayList<Mission> missionDeck, ArrayList<UltimateBias> ubDeck){
+	public Player(String name, ArrayList<MissionCard> missionDeck, ArrayList<UltimateBiasCard> ubDeck){
 		this.name = name;
 		this.score = 0;
-		this.hand = new ArrayList<Idol>();
+		this.hand = new ArrayList<IdolCard>();
 		this.mission = missionDeck.remove(0);
 		this.ultimateBias = ubDeck.remove(0);
-		this.playArea = new HashMap<Groups,ArrayList<Idol>>();
+		this.playArea = new HashMap<Group,ArrayList<IdolCard>>();
 	}
 
 	public int updateScore(ArrayList<Group> groups){
 		int totalScore = 0;
 
-		for (Groups groupName: playArea.keySet()){
-	        ArrayList<Idol> members = playArea.get(groupName);
+		for (Group groupName: playArea.keySet()){
+	        ArrayList<IdolCard> members = playArea.get(groupName);
 
 	        for (int i = 0; i < groups.size(); i++){
-	        	if (groups.get(i).getName().equals(groupName)){
+	        	if (groups.get(i).toString().equals(groupName)){
 	        		Map<Integer,Integer> tiers = groups.get(i).getPointValues();
 	        		int highestTier = 0;
 	        		for (Integer key: tiers.keySet()){
@@ -47,11 +47,11 @@ class Player {
 		ArrayList<Integer> reversedIndices = indices;
 		Collections.sort(reversedIndices, Collections.reverseOrder());
 		for (int index: indices){
-			Idol curCard = this.hand.remove(index);
+			IdolCard curCard = this.hand.remove(index);
 			if (playArea.keySet().contains(curCard.getGroup())){
 				this.playArea.get(curCard.getGroup()).add(curCard);
 			}else{
-				ArrayList<Idol> newCards = new ArrayList<Idol>();
+				ArrayList<IdolCard> newCards = new ArrayList<IdolCard>();
 				newCards.add(curCard);
 				this.playArea.put(curCard.getGroup(), newCards);
 			}
