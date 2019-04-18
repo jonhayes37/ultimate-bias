@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Game {
 	private ArrayList<Player> players;
 	private Deck drawPile;
@@ -23,5 +25,17 @@ class Game {
 			}
 		}
 		return winners;
+	}
+
+	public static void main(String[] args){
+		System.out.println("Starting game");
+		System.out.println(Idols.values());
+
+		/*
+		Step 1: create decks (mission, ultimate bias, draw pile), shuffle cards
+		Step 2: determine number of players
+		Step 3: deal 7 idol cards, mission, ub to each player
+		step 4: start game loop w/ check for deck empty
+		*/
 	}
 }
