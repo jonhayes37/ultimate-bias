@@ -1,0 +1,11 @@
+public enum Nationality {
+	CANADA,
+	CHINA,
+	JAPAN,
+	KOREA,
+	TAIWAN,
+	THAILAND,
+	UK,
+	UNITED_STATES,
+	VIETNAM
+}

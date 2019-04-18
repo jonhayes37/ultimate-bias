@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Group {
 	private String name;
 	private int size;
@@ -12,7 +14,7 @@ class Group {
 			if (tiers.length == points.length && tiers.length > 0){
 				this.pointValues = new HashMap<Integer,Integer>();
 				for (int i = 0; i < tiers.length; i++){
-					this.pointValues.put(tiers[i], points[i])
+					this.pointValues.put(tiers[i], points[i]);
 				}
 			}else{
 				throw new IndexOutOfBoundsException();
@@ -23,7 +25,7 @@ class Group {
 	}
 
 	public String getName(){ return this.name; }
-	public int getSize(){ return this.size(); }
+	public int getSize(){ return this.size; }
 	public String getLabel(){ return this.label; }
 	public Map<Integer,Integer> getPointValues(){ return this.pointValues; }
 }
