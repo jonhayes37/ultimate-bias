@@ -1,4 +1,4 @@
-class UltimateBias extends Idol {
+class UltimateBiasCard extends IdolCard {
 	private boolean abilityUsed;
 	private int unusedPointValue;
 
