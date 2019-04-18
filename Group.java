@@ -1,31 +1,50 @@
-import java.util.*;
+public enum Group {
 
-class Group {
-	private String name;
-	private int size;
-	private String label;
-	private Map<Integer,Integer> pointValues;
+	APRIL(
+		Label.DSP, 
+		new ArrayList<String>(Arrays.asList("Chaekyung", "Chaewon", "Jinsol", "Naeun", "Rachel", "Yena")), 
+		Map.of(3, 20, 5, 50, 6, 70)
+	),
+	AOA(
+		Label.FNC, 
+		new ArrayList<String>(Arrays.asList("Chanmi", "Choa", "Hyejeong", "Jimin", "Mina", "Seolhyun", "Yuna")), 
+		Map.of(3, 20, 5, 50, 7, 90)
+	),
+	GIRLS_GENERATION(
+		Label.SM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	),
+	LOVELYZ(
+		Label.WOOLLIM, 
+		new ArrayList<String>(Arrays.asList("Hyoyeon", "Jessica", "Seohyun", "Sooyoung", "Sunny", "Taeyeon", "Tiffany", "Yoona", "Yuri")), 
+		Map.of(3, 15, 6, 60, 9, 140)
+	);
 
-	public Group(String name, int size, String label, int[] tiers, int[] points){
-		this.name = name;
-		this.size = size;
-		this.label = label;
-		try {
-			if (tiers.length == points.length && tiers.length > 0){
-				this.pointValues = new HashMap<Integer,Integer>();
-				for (int i = 0; i < tiers.length; i++){
-					this.pointValues.put(tiers[i], points[i]);
-				}
-			}else{
-				throw new IndexOutOfBoundsException();
-			}
-		}catch (IndexOutOfBoundsException e){
-			System.out.println("Error: Tiers and Points do not have equal lengths!");
-		}
-	}
+	private final Label label;
+	private final ArrayList<String> members;
+	private final Map<Integer,Integer> pointValues;
 
-	public String getName(){ return this.name; }
-	public int getSize(){ return this.size; }
-	public String getLabel(){ return this.label; }
-	public Map<Integer,Integer> getPointValues(){ return this.pointValues; }
+    Group(Label label, ArrayList<String> members, Map<Integer,Integer> pointValues) {
+        this.label = label;
+        this.members = members;
+        this.pointValues = pointValues;
+    }
+    
+   	public Label getLabel() { return this.label; }
+   	public ArrayList<String> getMembers() { return this.members; }
+   	public Map<Integer,Integer> getPointValues() { return this.pointValues; }
+
+   	public int getTierPoints(int numMembers){
+   		try {
+   			if (this.pointValues.keySet().contains(numMembers)){
+   				return this.pointValues.get(numMembers)
+   			}else{
+   				throw new KeyException(this.toString() + " does not have a point tier for " + numMembers + " members!");
+   			}
+   		} catch (KeyException e) {
+   			System.out.println(e);
+   			return null;
+   		}
+   	}
 }
