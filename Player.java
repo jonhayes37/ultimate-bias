@@ -2,6 +2,7 @@ import java.util.*;
 
 class Player {
 	private static final int CARD_DEDUCTION_PENALTY = 5;
+	private static final int STARTING_HAND_SIZE = 7;
 
 	private String name;
 	private int score;
@@ -10,38 +11,38 @@ class Player {
 	private UltimateBiasCard ultimateBias;
 	private Map<Group,ArrayList<IdolCard>> playArea;
 
-	public Player(String name, ArrayList<MissionCard> missionDeck, ArrayList<UltimateBiasCard> ubDeck){
+	public Player(String name, Deck<IdolCard> idolDeck, Deck<MissionCard> missionDeck, Deck<UltimateBiasCard> ubDeck){
 		this.name = name;
 		this.score = 0;
-		this.hand = new ArrayList<IdolCard>();
-		this.mission = missionDeck.remove(0);
-		this.ultimateBias = ubDeck.remove(0);
+		this.hand = idolDeck.drawCards(Player.STARTING_HAND_SIZE);
+		this.mission = missionDeck.drawCard();
+		this.ultimateBias = ubDeck.drawCard();
 		this.playArea = new HashMap<Group,ArrayList<IdolCard>>();
 	}
 
-	public int updateScore(ArrayList<Group> groups){
-		int totalScore = 0;
+	// public int updateScore(ArrayList<Group> groups){
+	// 	int totalScore = 0;
 
-		for (Group groupName: playArea.keySet()){
-	        ArrayList<IdolCard> members = playArea.get(groupName);
+	// 	for (Group groupName: playArea.keySet()){
+	//         ArrayList<IdolCard> members = playArea.get(groupName);
 
-	        for (int i = 0; i < groups.size(); i++){
-	        	if (groups.get(i).toString().equals(groupName)){
-	        		Map<Integer,Integer> tiers = groups.get(i).getPointValues();
-	        		int highestTier = 0;
-	        		for (Integer key: tiers.keySet()){
-	        			if (members.size() >= key && tiers.get(key) > highestTier){
-	        				highestTier = tiers.get(key);
-	        			}
-	        		}
-	        		totalScore += highestTier;
-	        		break;
-	        	}
-	        }
-	    }
-	    this.score = totalScore;
-		return this.score;
-	}
+	//         for (int i = 0; i < groups.size(); i++){
+	//         	if (groups.get(i).toString().equals(groupName)){
+	//         		Map<Integer,Integer> tiers = groups.get(i).getPointValues();
+	//         		int highestTier = 0;
+	//         		for (Integer key: tiers.keySet()){
+	//         			if (members.size() >= key && tiers.get(key) > highestTier){
+	//         				highestTier = tiers.get(key);
+	//         			}
+	//         		}
+	//         		totalScore += highestTier;
+	//         		break;
+	//         	}
+	//         }
+	//     }
+	//     this.score = totalScore;
+	// 	return this.score;
+	// }
 
 	public void PlayCards(ArrayList<Integer> indices){
 		ArrayList<Integer> reversedIndices = indices;

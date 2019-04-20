@@ -1,10 +1,12 @@
 public enum Label {
 	BANANA_REPUBLIC,
 	CUBE,
+	DREAM_T,
 	DSP,
 	FNC,
 	JELLYFISH,
 	JTG,
+	JYP,
 	MBK,
 	NH,
 	PASCAL,

@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 class Game {
 	private ArrayList<Player> players;
@@ -27,9 +27,32 @@ class Game {
 		return winners;
 	}
 
+	public static ArrayList<IdolCard> generateIdolDeck(){
+		ArrayList<IdolCard> idols = new ArrayList<IdolCard>();
+		for (Group group: Group.values()){
+			for (String member: group.getMembers()){
+				IdolCard curCard = new IdolCard(member, group, Nationality.KOREA, "");
+				idols.add(curCard);
+			}
+		}
+		return idols;
+	}
+
 	public static void main(String[] args){
 		System.out.println("Starting game");
-		System.out.println(Group.values());
+		
+		// Create decks, shuffle each one
+		Deck<IdolCard> idolDeck = new Deck<IdolCard>(Game.generateIdolDeck());
+		Deck<MissionCard> missionDeck = new Deck<MissionCard>(new ArrayList<MissionCard>(Arrays.asList(MissionCard.values())));
+		Deck<UltimateBiasCard> ultimateBiasDeck = new Deck<UltimateBiasCard>(new ArrayList<UltimateBiasCard>(Arrays.asList(UltimateBiasCard.values())));
+		idolDeck.shuffle();
+		missionDeck.shuffle();
+		ultimateBiasDeck.shuffle();
+
+		System.out.println("Lengths: " + idolDeck.length() + "," + missionDeck.length() + "," + ultimateBiasDeck.length());
+		Player p1 = new Player("Jonathan", idolDeck, missionDeck, ultimateBiasDeck);
+		Player p2 = new Player("Jinsol", idolDeck, missionDeck, ultimateBiasDeck);
+		System.out.println("Lengths: " + idolDeck.length() + "," + missionDeck.length() + "," + ultimateBiasDeck.length());
 		/*
 		Step 1: create decks (mission, ultimate bias, draw pile), shuffle cards
 		Step 2: determine number of players

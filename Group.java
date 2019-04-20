@@ -3,12 +3,12 @@ import java.util.*;
 
 public enum Group {
 
-	2NE1(
+	TWO_NE1(
 		Label.YG, 
 		new ArrayList<String>(Arrays.asList("Bom", "CL", "Dara", "Minzy")), 
 		Map.of(3, 25, 4, 40)
 	),
-	4MINUTE(
+	FOUR_MINUTE(
 		Label.CUBE, 
 		new ArrayList<String>(Arrays.asList("Gayoon", "Hyuna", "Jihyun", "Jiyoon", "Sohyun")), 
 		Map.of(3, 25, 5, 55)

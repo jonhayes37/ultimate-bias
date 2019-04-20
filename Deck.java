@@ -1,43 +1,43 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
-class Deck {
+class Deck<T> {
 	// Index 0 is "top" of deck
-	private ArrayList<Card> cards;
+	private ArrayList<T> cards;
 
 	public Deck(){
-		this.cards = new ArrayList<Card>();
+		this.cards = new ArrayList<T>();
 	}
 
-	public Deck(Card c){
-		this.cards = new ArrayList<Card>();
+	public Deck(T c){
+		this.cards = new ArrayList<T>();
 		this.cards.add(c);
 	}
 
-	public Deck(ArrayList<Card> c){
+	public Deck(ArrayList<T> c){
 		this.cards = c;
 	}
 
 	public int length(){ return this.cards.size(); }
+	public ArrayList<T> getCards(){ return this.cards; }
 
-	public Card DrawCard(){
-		Card drawn = this.cards.remove(0);
+	public T drawCard(){
+		T drawn = this.cards.remove(0);
 		return drawn;
 	}
 
-	public ArrayList<Card> DrawCards(int numToDraw){
-		ArrayList<Card> cardsDrawn = new ArrayList<Card>();
+	public ArrayList<T> drawCards(int numToDraw){
+		ArrayList<T> cardsDrawn = new ArrayList<T>();
 		for (int i = 0; i < numToDraw; i++){
-			cardsDrawn.add(this.DrawCard());
+			cardsDrawn.add(this.drawCard());
 		}
 		return cardsDrawn;
 	}
 
-	public void addToTop(Card c){
+	public void addToTop(T c){
 		this.cards.add(0, c);
 	}
 
-	public void addToBottom(Card c){
+	public void addToBottom(T c){
 		this.cards.add(c);
 	}
 
