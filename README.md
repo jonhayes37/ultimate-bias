@@ -6,4 +6,5 @@ Ultimate Bias is a card game I invented involving K-Pop idols. It's a point-earn
 ## Current Next Steps of Implementation:
 - Create an enum for Idols with name, nationality
 - Change artist enums to use idol enum instead of strings
+- Update PlayArea / PlaySet design & heirarchy
 - Begin design for the game engine (high level turn handling)
